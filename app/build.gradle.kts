@@ -26,7 +26,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -77,8 +78,7 @@ dependencies {
     kapt(libs.androidx.hilt.compiler)
 
     //Glide
-    implementation(libs.glide.compose)
-
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
     //Retrofit dependencies
     implementation(libs.retrofit)

@@ -80,7 +80,7 @@ fun ShowProfileBanner(url: String, name: String, description: String, location: 
 @Composable
 fun GreetingPreview() {
     ShowProfileBanner(
-        "",
+        "https://mega-onemega.com/wp-content/uploads/2024/01/MEGASTYLE-ELISIA-PARMISANO-IN-ART-1.jpg",
         "test", "dec",
         "cebu"
     )
