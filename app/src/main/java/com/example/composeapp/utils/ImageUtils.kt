@@ -4,6 +4,9 @@ import android.graphics.Bitmap
 
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -12,6 +15,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import coil.transform.CircleCropTransformation
+
 object ImageUtils {
 
 
@@ -20,10 +25,11 @@ object ImageUtils {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
                 .data(url).crossfade(true)
+                .transformations(CircleCropTransformation())
                 .build(),
             contentDescription = "Image description",
             contentScale = ContentScale.Crop,
-            modifier =  modifier
+            modifier = modifier
         )
     }
 

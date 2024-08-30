@@ -19,6 +19,7 @@ import com.example.composeapp.utils.ImageUtils
 
 @Composable
 fun WelcomePage(onclick: () ->Unit) {
+    val context = LocalContext.current
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -37,7 +38,7 @@ fun WelcomePage(onclick: () ->Unit) {
                 .height(44.dp)
                 .align(Alignment.Center),
             drawable = R.drawable.ic_logo_splash,
-            colorFilter = ColorFilter.tint(Color(LocalContext.current.getColor(R.color.theme_color)))
+            colorFilter = ColorFilter.tint(Color(context.getColor(R.color.theme_color)))
         )
 
         BaseButton(modifier = Modifier
@@ -47,7 +48,7 @@ fun WelcomePage(onclick: () ->Unit) {
             .padding(bottom = 16.dp, end = 36.dp, start = 36.dp),
             onclick = {onclick.invoke()},
             text = "Get Started",
-            backgroundColor = Color(LocalContext.current.getColor(R.color.theme_color))
+            backgroundColor = Color(context.getColor(R.color.theme_color))
         )
     }
 }

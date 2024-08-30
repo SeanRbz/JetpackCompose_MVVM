@@ -7,6 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="theme_color">#FF5580 </color>
-    <color name="ligh_gray">#E5E5E5 </color>
+    <color name="theme_color">#FF5580</color>
+    <color name="light_gray">#E5E5E5</color>
+    <color name="light_gray_2">#333333</color>
+    <color name="light_dark">#232323</color>
 </resources>

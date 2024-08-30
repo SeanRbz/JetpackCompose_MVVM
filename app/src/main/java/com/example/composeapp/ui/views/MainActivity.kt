@@ -24,18 +24,20 @@ import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.compose.ui.unit.sp
 import com.example.composeapp.R
 import com.example.composeapp.navigation.BottomNavigationItems
 import com.example.composeapp.navigation.SetNavigationController
+import com.example.composeapp.ui.views.base.BaseBoldText
+import com.example.composeapp.ui.views.base.HeadLineText
 import com.example.composeapp.ui.views.users.ShowProfileBanner
+import com.example.composeapp.utils.FontUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
         enableEdgeToEdge()
         setContent {
             MainActivityView()
@@ -72,7 +74,10 @@ fun MainActivityView() {
         topBar = {
             TopAppBar(
                 title = {
-                    Text("Pimpify")
+                    HeadLineText(
+                        text = "Pimpify", fontSize = 24.sp,
+                        fontFamily = FontUtils.salsaFamily
+                    )
                 }
             )
         },

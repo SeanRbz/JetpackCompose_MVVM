@@ -23,7 +23,9 @@ class UsersViewModel @Inject constructor(val getNearbyUsersUseCase: GetNearbyUse
     val uiState: StateFlow<UsersPageUIState> = _uiState.asStateFlow()
 
     fun setSelectedUser(user: UsersData) {
-        _uiState.update { it.copy(selectedUser = user) }
+        viewModelScope.launch {
+            _uiState.update { it.copy(selectedUser = user) }
+        }
     }
 
     fun getNearbyUsers() {

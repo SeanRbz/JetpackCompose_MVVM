@@ -14,7 +14,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
@@ -42,7 +42,7 @@ object AppModule {
     fun providesChatAPI(
         gson: Gson, api: BaseUrlService, provideOkHttpClient: OkHttpClient
     ): Retrofit = Retrofit.Builder().baseUrl(api.baseUrl).client(provideOkHttpClient)
-        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create(gson)).build()
 
     @Singleton

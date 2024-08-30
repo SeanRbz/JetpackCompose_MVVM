@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "909748469527",
+    "project_id": "mdgpimpify",
+    "storage_bucket": "mdgpimpify.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909748469527:android:8068c25f05e6a501a34152",
+        "android_client_info": {
+          "package_name": "com.example.composeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI-NK9ecDYaZteijTSE8qXnuO6vckcgN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

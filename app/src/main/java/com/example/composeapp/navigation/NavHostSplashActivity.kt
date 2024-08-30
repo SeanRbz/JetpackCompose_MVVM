@@ -56,10 +56,6 @@ fun SetSplashNavController(paddingValues: PaddingValues) {
                 rememberNav = it
             }
         }
-
-        composable(SplashScreens.MainPageScreen.route) {
-            MainActivity()
-        }
     }
 
     when(rememberNav){

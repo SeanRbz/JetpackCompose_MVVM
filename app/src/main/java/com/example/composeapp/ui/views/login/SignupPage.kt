@@ -25,10 +25,12 @@ import com.example.composeapp.R
 import com.example.composeapp.navigation.SplashScreens
 import com.example.composeapp.ui.views.base.BaseButton
 import com.example.composeapp.ui.views.base.BaseInputField
+import com.example.composeapp.ui.views.base.BaseNormalText
 import com.example.composeapp.utils.ImageUtils
 
 @Composable
 fun SignupPage(callback: (String) -> Unit){
+    val context = LocalContext.current
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -49,13 +51,8 @@ fun SignupPage(callback: (String) -> Unit){
                 colorFilter = ColorFilter.tint(Color(LocalContext.current.getColor(R.color.theme_color)))
             )
 
-            Text(
-                text = "Email",
-                modifier = Modifier
-                    .align(Alignment.Start)
-                    .padding(top = 16.dp),
-                textAlign = TextAlign.Start
-            )
+            BaseNormalText( text = "Email", modifier = Modifier.align(Alignment.Start).padding(top = 16.dp),
+                textColor =  Color(context.getColor(R.color.light_dark)))
 
             BaseInputField(
                 modifier = Modifier.padding(top = 12.dp),
@@ -63,27 +60,15 @@ fun SignupPage(callback: (String) -> Unit){
                 value = "",
                 onValueChange = {})
 
-            Text(
-                text = "Password",
-                modifier = Modifier
-                    .align(Alignment.Start)
-                    .padding(top = 16.dp),
-                textAlign = TextAlign.Start
-            )
+            BaseNormalText( text = "Password", modifier = Modifier.align(Alignment.Start).padding(top = 16.dp))
 
             BaseInputField(
                 modifier = Modifier.padding(top = 12.dp),
                 label = "******",
                 value = "",
                 onValueChange = {})
-
-            Text(
-                text = "Confirm Password",
-                modifier = Modifier
-                    .align(Alignment.Start)
-                    .padding(top = 16.dp),
-                textAlign = TextAlign.Start
-            )
+            BaseNormalText( text = "Confirm Password", modifier = Modifier.align(Alignment.Start).padding(top = 16.dp),
+                textColor =  Color(context.getColor(R.color.light_dark)))
 
             BaseInputField(
                 modifier = Modifier.padding(top = 12.dp),
@@ -103,11 +88,8 @@ fun SignupPage(callback: (String) -> Unit){
                 backgroundColor = Color(LocalContext.current.getColor(R.color.theme_color))
             )
 
-            Text(
-                modifier = Modifier.padding(top = 16.dp),
-                text = "Signin With",
-                textAlign = TextAlign.Start
-            )
+            BaseNormalText( text = "Sign in With", modifier = Modifier.align(Alignment.Start).padding(top = 16.dp),
+                textColor =  Color(context.getColor(R.color.light_dark)))
 
             Row(
                 modifier = Modifier

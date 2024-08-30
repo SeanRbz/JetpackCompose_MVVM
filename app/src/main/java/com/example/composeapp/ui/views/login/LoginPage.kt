@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
@@ -26,14 +27,17 @@ import androidx.compose.ui.unit.dp
 import com.example.composeapp.R
 import com.example.composeapp.navigation.SplashScreens
 import com.example.composeapp.ui.views.base.BaseButton
+import com.example.composeapp.ui.views.base.BaseCheckbox
 import com.example.composeapp.ui.views.base.BaseInputField
+import com.example.composeapp.ui.views.base.BaseNormalText
 import com.example.composeapp.utils.ImageUtils
 
 @Composable
 fun LoginPage(callback: (String) -> Unit) {
+    val context = LocalContext.current
+
     Box(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize().fillMaxWidth()
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -51,30 +55,29 @@ fun LoginPage(callback: (String) -> Unit) {
                 colorFilter = ColorFilter.tint(Color(LocalContext.current.getColor(R.color.theme_color)))
             )
 
-            Text(
+            BaseNormalText(
                 text = "Email",
                 modifier = Modifier
                     .align(Alignment.Start)
                     .padding(top = 16.dp),
-                textAlign = TextAlign.Start
+                textAlign = TextAlign.Start,
+                textColor =  Color(context.getColor(R.color.light_dark))
             )
 
-            BaseInputField(
-                modifier = Modifier.padding(top = 12.dp),
+            BaseInputField(modifier = Modifier.padding(top = 12.dp),
                 label = "example@email.com",
                 value = "",
                 onValueChange = {})
-
-            Text(
+            BaseNormalText(
                 text = "Password",
                 modifier = Modifier
                     .align(Alignment.Start)
                     .padding(top = 16.dp),
-                textAlign = TextAlign.Start
+                textAlign = TextAlign.Start,
+                textColor =  Color(context.getColor(R.color.light_dark))
             )
 
-            BaseInputField(
-                modifier = Modifier.padding(top = 12.dp),
+            BaseInputField(modifier = Modifier.padding(top = 12.dp),
                 label = "example@email.com",
                 value = "",
                 onValueChange = {})
@@ -86,14 +89,10 @@ fun LoginPage(callback: (String) -> Unit) {
                     .padding(top = 16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Checkbox(
-                    checked = false,
-                    onCheckedChange = {}
-                )
 
-                Text(
-                    text = "Remember me",
-                    textAlign = TextAlign.Start
+                BaseCheckbox({})
+                BaseNormalText(
+                    text = "Remember Me", textAlign = TextAlign.Start, textColor =  Color(context.getColor(R.color.light_dark))
                 )
 
                 Spacer(modifier = Modifier.weight(1f))
@@ -106,45 +105,47 @@ fun LoginPage(callback: (String) -> Unit) {
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                Text(
-                    text = "Forgot Password?",
-                    textAlign = TextAlign.Start
+                BaseNormalText(
+                    text = "Forgot Password", textAlign = TextAlign.Start, textColor =  Color(context.getColor(R.color.light_dark))
                 )
+
             }
 
-            BaseButton(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(top = 16.dp),
-                onclick = {
+                BaseButton(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                        .padding(top = 16.dp),
+                    onclick = {
+                        callback.invoke(SplashScreens.MainPageScreen.route)
+                    },
+                    text = "Sign In",
+                    backgroundColor = Color(LocalContext.current.getColor(R.color.theme_color))
+                )
+
+                BaseNormalText(text = "Sign in With", textAlign = TextAlign.Start, textColor =  Color(context.getColor(R.color.light_dark)))
+
+                //general modifier
+                val modifier = Modifier.clickable {
                     callback.invoke(SplashScreens.MainPageScreen.route)
-                },
-                text = "Sign In",
-                backgroundColor = Color(LocalContext.current.getColor(R.color.theme_color))
-            )
-
-            Text(
-                modifier = Modifier.padding(top = 16.dp),
-                text = "Signin With",
-                textAlign = TextAlign.Start
-            )
-
-            //general modifier
-            val modifier = Modifier.clickable {
-                callback.invoke(SplashScreens.MainPageScreen.route)
-            }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(.70f)
-                    .padding(top = 36.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                ImageUtils.showImageDrawable(modifier = modifier, drawable = R.drawable.ic_facebook)
-                ImageUtils.showImageDrawable(modifier = modifier, drawable = R.drawable.ic_google)
-                ImageUtils.showImageDrawable(modifier = modifier, drawable = R.drawable.ic_apple)
-            }
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(.70f)
+                        .padding(top = 36.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    ImageUtils.showImageDrawable(
+                        modifier = modifier, drawable = R.drawable.ic_facebook
+                    )
+                    ImageUtils.showImageDrawable(
+                        modifier = modifier, drawable = R.drawable.ic_google
+                    )
+                    ImageUtils.showImageDrawable(
+                        modifier = modifier, drawable = R.drawable.ic_apple
+                    )
+                }
         }
     }
 }

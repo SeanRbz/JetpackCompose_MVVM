@@ -23,6 +23,7 @@ import com.example.composeapp.utils.ImageUtils
 
 @Composable
 fun LoginSignupPage(callback: (String) -> Unit) {
+    val context = LocalContext.current
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -47,7 +48,7 @@ fun LoginSignupPage(callback: (String) -> Unit) {
                     callback.invoke(SplashScreens.LoginPageScreen.route)
                 },
                 text = "Sign in",
-                backgroundColor = Color(LocalContext.current.getColor(R.color.theme_color))
+                backgroundColor = Color(context.getColor(R.color.theme_color))
             )
 
             BaseButton(
@@ -58,7 +59,7 @@ fun LoginSignupPage(callback: (String) -> Unit) {
                     .border(
                         BorderStroke(
                             2.dp,
-                            Color(LocalContext.current.getColor(R.color.theme_color))
+                            Color(context.getColor(R.color.theme_color))
                         ), RoundedCornerShape(12)
                     ),
                 onclick = {
