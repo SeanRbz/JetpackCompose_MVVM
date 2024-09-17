@@ -2,6 +2,7 @@ package com.example.composeapp.repository.entities
 
 import androidx.annotation.Keep
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 @Keep
 @Serializable
@@ -16,5 +17,6 @@ data class UsersData(
 @Serializable
 data class UserDataResponse(
     val list : List<UsersData>,
-    override val status_code: Int
+    override val statusCode: Int,
+    override val message: String
 ): BaseResponseEntity

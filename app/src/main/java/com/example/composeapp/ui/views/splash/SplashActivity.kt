@@ -14,13 +14,13 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
-class SplashActivity: ComponentActivity() {
+class SplashActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         enableEdgeToEdge()
         setContent {
-            Scaffold(){padding->
+            Scaffold() { padding ->
                 SetSplashNavController(padding)
             }
         }
@@ -30,5 +30,5 @@ class SplashActivity: ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-   // SetSplashNavController()
+    // SetSplashNavController()
 }

@@ -7,17 +7,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.example.composeapp.ui.viewModel.UsersViewModel
-import com.example.composeapp.ui.views.users.NearbyUsersPage
+import com.example.composeapp.ui.views.nearbyUsers.NearbyUsersPage
 import kotlinx.serialization.Serializable
 
 @Composable
-fun SetNavigationController(innerPadding: PaddingValues) {
+fun SetNavigationController(innerPadding: PaddingValues, navController: NavHostController) {
     val viewModel: UsersViewModel = hiltViewModel()
-    val navController = rememberNavController()
     viewModel.getNearbyUsers()
     NavHost(
         modifier = Modifier
@@ -25,16 +24,18 @@ fun SetNavigationController(innerPadding: PaddingValues) {
             .fillMaxSize()
             .fillMaxWidth(),
         navController = navController,
-        startDestination = Screen.NearbyUsersListPage.route
+        startDestination = MainActivityScreens.NearbyUsersListPage.route
     ) {
-        composable(Screen.NearbyUsersListPage.route) {
+        composable(MainActivityScreens.NearbyUsersListPage.route) {
             NearbyUsersPage(viewModel)
         }
     }
 }
 
 @Serializable
-sealed class Screen(val route: String) {
-    object NearbyUsersListPage : Screen("NearbyUsersListPage")
-    object ProfilePage : Screen("ProfilePage")
+sealed class MainActivityScreens(val route: String) {
+    object NearbyUsersListPage : MainActivityScreens("NearbyUsersListPage")
+    object ProfilePage : MainActivityScreens("ProfilePage")
+    object MessagesPage : MainActivityScreens("MessagesPage")
+    object NotificationPage : MainActivityScreens("NotificationPage")
 }

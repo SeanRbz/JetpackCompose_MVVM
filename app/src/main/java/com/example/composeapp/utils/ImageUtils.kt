@@ -1,14 +1,13 @@
 package com.example.composeapp.utils
 
 import android.graphics.Bitmap
-
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -16,6 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
+import com.example.composeapp.R
+import com.example.composeapp.ui.views.base.BaseNormalText
 
 object ImageUtils {
 
@@ -71,6 +72,27 @@ object ImageUtils {
             modifier = modifier,
             colorFilter = colorFilter
         )
+    }
+
+
+    @Composable
+    fun showImageDrawableWithText(
+        modifier: Modifier = Modifier,
+        drawable: Int,
+        text: String,
+        colorFilter: ColorFilter? = null,
+    ) {
+        val context = LocalContext.current
+        Column(horizontalAlignment = Alignment.CenterHorizontally){
+            Image(
+                painterResource(id = drawable),
+                contentDescription = "",
+                contentScale = ContentScale.Crop,
+                modifier = modifier,
+                colorFilter = colorFilter
+            )
+            BaseNormalText(text = text, textColor = Color(context.getColor(R.color.light_gray_3)))
+        }
     }
 }
 

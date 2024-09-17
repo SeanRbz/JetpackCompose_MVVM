@@ -2,10 +2,9 @@ package com.example.composeapp.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.composeapp.repository.entities.UserDataResponse
 import com.example.composeapp.repository.entities.UsersData
 import com.example.composeapp.repository.usecases.GetNearbyUsersUseCase
-import com.example.composeapp.ui.views.users.model.UsersPageUIState
+import com.example.composeapp.ui.views.nearbyUsers.model.UsersPageUIState
 import com.example.composeapp.utils.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

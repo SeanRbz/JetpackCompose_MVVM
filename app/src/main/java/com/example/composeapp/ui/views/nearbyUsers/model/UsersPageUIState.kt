@@ -1,4 +1,4 @@
-package com.example.composeapp.ui.views.users.model
+package com.example.composeapp.ui.views.nearbyUsers.model
 
 import com.example.composeapp.repository.entities.UsersData
 

@@ -12,18 +12,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.composeapp.ui.views.MainActivity
 import com.example.composeapp.ui.views.login.LoginPage
 import com.example.composeapp.ui.views.login.LoginSignupPage
+import com.example.composeapp.ui.viewModel.LoginSignupViewModel
 import com.example.composeapp.ui.views.login.SignupPage
 import com.example.composeapp.ui.views.splash.WelcomePage
 import kotlinx.serialization.Serializable
 
 @Composable
 fun SetSplashNavController(paddingValues: PaddingValues) {
+    val loginSignupVM: LoginSignupViewModel = hiltViewModel()
     var rememberNav by remember { mutableStateOf("") }
     val context = LocalContext.current
 
@@ -47,12 +50,12 @@ fun SetSplashNavController(paddingValues: PaddingValues) {
             }
         }
         composable(SplashScreens.LoginPageScreen.route) {
-            LoginPage{
+            LoginPage(viewModel = loginSignupVM) {
                 rememberNav = it
             }
         }
         composable(SplashScreens.SignupPageScreen.route) {
-            SignupPage{
+            SignupPage(viewModel = loginSignupVM) {
                 rememberNav = it
             }
         }

@@ -3,10 +3,15 @@ package com.example.composeapp.ui.views.base
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -28,10 +33,11 @@ fun BaseInputField(
     placeholder: String? = null
 ) {
     Column(modifier) {
-        TextField(
+        OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
             label = { Text(label) },
+            enabled = true,
             placeholder = placeholder?.let { { Text(it) } },
             modifier = Modifier.fillMaxWidth().background(Color(LocalContext.current.getColor(R.color.light_gray))),
             singleLine = true,
